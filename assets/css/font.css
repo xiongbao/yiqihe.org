@@ -1,0 +1,7 @@
+@font-face {
+	font-family: 'main';
+	src: url('../fonts/PingFangLight.ttf') format('TrueType'),
+	     url('../fonts/PingFangLight.woff') format('woff'),
+	     url('../fonts/PingFangLight.eot') format('embedded-opentype');
+	font-display: swap;
+}
