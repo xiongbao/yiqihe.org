@@ -6,6 +6,13 @@
 	font-display: swap;
 }
 @font-face {
+	font-family: 'title';
+	src: url('../fonts/PingFangBold.ttf') format('TrueType'),
+	     url('../fonts/PingFangBold.woff') format('woff'),
+	     url('../fonts/PingFangBold.eot') format('embedded-opentype');
+	font-display: swap;
+}
+@font-face {
 	font-family: 'main';
 	src: url('../fonts/PingFangLight.ttf') format('TrueType'),
 	     url('../fonts/PingFangLight.woff') format('woff'),
@@ -28,8 +35,12 @@ body {
 	font-family: "main",-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, Arial, sans-serif;
 	font-size: 16px;
     color:#3D3E43;
+    background-image: url(../images/bg-pc.svg);
+    background-position: 50% 0;
+    background-size: 3000px auto;
+    background-repeat: no-repeat;
 }
-h1,h2,h3 {color:#03081A;}
+h1,h2,h3 {color:#03081A;font-family: 'title';font-weight: normal;}
 ul,ol {list-style: none;margin: 0;padding: 0;}
 article,footer {max-width: 1200px;margin: 0 auto;}
 a,a:visited {
@@ -86,6 +97,22 @@ article h2::before {
 article p {
 	font-size: .4rem;font-weight: 300;letter-spacing: .1rem;line-height: 1.5;
 }
+.join {
+	text-align: center;
+}
+.join .btn {
+	padding: 10px 40px;
+    font-size: 32px;
+    font-weight: 500;
+    color: #fff;
+    background-image: linear-gradient(180deg,#4069FF,#955af5);
+    border-radius: 50px;
+    display: inline-block;
+}
+.join .btn:hover {
+	background-image: linear-gradient(180deg,#305bf7,#8641f5);
+}
+
 .page-3 {margin:1rem 0;}
 .team {
 	display: flex;
@@ -200,6 +227,13 @@ footer {text-align: center;margin-top: 1rem;padding: 0 0 .5rem;}
 .event-item:nth-child(2n) .event-detail {
 	text-align: right;
 }*/
+
+@keyframes scrollArrow {
+	0% {transform:translate3d(-50%,0%,0);}
+	50% {transform:translate3d(-50%,15%,0);}
+	100% {transform:translate3d(-50%,0%,0);}
+}
+
 @media (orientation: landscape) and (max-width: 1360px) {
 	article {padding: 0 .5rem 0 1rem;}
 }
@@ -214,26 +248,34 @@ footer {text-align: center;margin-top: 1rem;padding: 0 0 .5rem;}
 	.member-info .intro {margin-top: .4rem;font-size: .3rem;}
 }
 @media (orientation: portrait) and (max-width: 1024px) {
+	html,body,.page-container,.page-wrapper {height: 100%;}
 	html {
 		font-size: 13.3333vw;
 	}
-	body {font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, Arial, sans-serif;}
+	body {
+		font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, Arial, sans-serif;
+		background-size: contain;
+	}
 	[class^="page-"] {
-		min-height: 100vh;
+		height: 100%;
 		position: relative;
 	}
 	article {margin:0;position: relative;z-index: 1;padding-left:.6rem;padding-right: .4rem;}
-	article.swiper-users,
-	article.swiper-party {padding: 0;}
+	.swiper-users,
+	.swiper-party {padding: 0;height: 100%;}
 	article h2 {font-size: 1rem;}
 	article h2::before {display: none;}
 	article p {font-size: .44rem;}
+	.join {margin-top: 1rem;}
+	.join .btn {font-size: 20px;}
 	footer {display: none;}
 	.swiper-pagination {
 		position: absolute;
 		left: 0;
 	    right: 0;
-	    bottom: .2rem;
+		bottom: .2rem;
+		bottom: calc(.2rem + constant(safe-area-inset-bottom));
+		bottom: calc(.2rem + env(safe-area-inset-bottom));
 	}
 	.swiper-pagination-bullet {margin:0 2px;}
 	.page-1 h1 {margin-top: 0;font-size: 1.2rem;}
@@ -260,14 +302,14 @@ footer {text-align: center;margin-top: 1rem;padding: 0 0 .5rem;}
 		content: '';
 		position: absolute;
 		height: 1.7rem;
-		left: 0;right: 0;bottom: 100%;
+		left: 0;right: 0;bottom: 99.4%;
 		background-image: url(../images/photo-mask.svg);
 		background-size: cover;
 		background-repeat: no-repeat;
 	}
 	.member .photo {
 		position: static;
-		height: 60vh;
+		height: 60%;
 
 	}
 	.member-info .name,
@@ -296,11 +338,11 @@ footer {text-align: center;margin-top: 1rem;padding: 0 0 .5rem;}
 	/*.event-item:first-child {margin:0;}*/
 	.event-item .avatar {
 		width: 100%;
-		height: 50vh;
+		height: 50%;
 		margin: 0;
 	}
 	.event-item .avatar::before {
-		bottom: 0;
+		bottom: -2px;
 	}
 	.event-detail {
 		display: block;
@@ -330,5 +372,15 @@ footer {text-align: center;margin-top: 1rem;padding: 0 0 .5rem;}
 	.event-intro {
 		font-size: inherit;
 	}
-
+	/* 翻页按钮 */
+	.icon-scroll {
+		position: fixed;z-index: 10;left: 50%;bottom:.5rem;color:transparent;width:.56rem;height:.56rem;
+		bottom: calc(.5rem + constant(safe-area-inset-bottom));
+		bottom: calc(.5rem + env(safe-area-inset-bottom));
+		transform:translate3d(-50%,0%,0);
+		opacity: .2;
+		background-image: url(../images/uarrow.png);
+		background-size: cover;
+		animation: scrollArrow 1.5s infinite;
+	}
 }
