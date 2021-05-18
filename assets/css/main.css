@@ -1,22 +1,22 @@
 @font-face {
 	font-family: 'introduced';
-	src: url('../fonts/HYRunYuan.ttf') format('TrueType'),
-	     url('../fonts/HYRunYuan.woff') format('woff'),
-	     url('../fonts/HYRunYuan.eot') format('embedded-opentype');
+	src: url('../fonts/HYRunYuan.ttf?20210519') format('TrueType'),
+	     url('../fonts/HYRunYuan.woff?20210519') format('woff'),
+	     url('../fonts/HYRunYuan.eot?20210519') format('embedded-opentype');
 	font-display: swap;
 }
 @font-face {
 	font-family: 'title';
-	src: url('../fonts/PingFangBold.ttf') format('TrueType'),
-	     url('../fonts/PingFangBold.woff') format('woff'),
-	     url('../fonts/PingFangBold.eot') format('embedded-opentype');
+	src: url('../fonts/MFZaoZiGongFang.ttf?20210519') format('TrueType'),
+	     url('../fonts/MFZaoZiGongFang.woff?20210519') format('woff'),
+	     url('../fonts/MFZaoZiGongFang.eot?20210519') format('embedded-opentype');
 	font-display: swap;
 }
 @font-face {
 	font-family: 'main';
-	src: url('../fonts/PingFangLight.ttf') format('TrueType'),
-	     url('../fonts/PingFangLight.woff') format('woff'),
-	     url('../fonts/PingFangLight.eot') format('embedded-opentype');
+	src: url('../fonts/PingFangLight.ttf?20210519') format('TrueType'),
+	     url('../fonts/PingFangLight.woff?20210519') format('woff'),
+	     url('../fonts/PingFangLight.eot?20210519') format('embedded-opentype');
 	font-display: swap;
 }
 html,body {
@@ -60,7 +60,7 @@ a,a:visited {
 .page-1 h1 {
 	font-size: 1rem;
 	color: transparent;
-	background-image: url(../images/logo.svg);
+	background-image: url(../images/logo-2021.svg);
 	background-size: auto 90%;
 	background-repeat: no-repeat;
 	background-position: 0 50%;
